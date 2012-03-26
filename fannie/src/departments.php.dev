@@ -1,0 +1,43 @@
+<?php
+require_once('mysql_connect.php');
+
+$GROCERY = array(1,2,7,8,17);
+$DELI = array(9,10,12,18;
+$MEAT = array(13,19);
+$PRODUCE = array(4,5,6);
+$WELLNESS = array(3,15,16);
+$GENERALMERCHANDISE = array(14,46);
+
+$DEPTS = array($GROCERY,$DELI,$MEAT,$PRODUCE,$WELLNESS,$GENERALMERCHANDISE);
+
+echo "<td><font size='-1'>
+        <p><input type='checkbox' value=1 name='allDepts' id='all' CHECKED><b><label for='all'>All SubDepartments</label></b><br>";
+foreach ($DEPTS as $value) {
+echo "Value: $value<br />\n";
+
+	$q = "SELECT * FROM departments WHERE dept_no IN(" . $value . ")";
+echo $q;
+	$r = mysql_query($q);
+	while($row = mysql_fetch_assoc($r)) {
+		if (!is_numeric($row['dept_name'])) {
+			echo "<input type='checkbox' name='dept[]' value='".$row['dept_no']."' id='chkbox-" . $row['dept_no'] . "'>\n
+			<label for='chkbox-" . $row['dept_no'] . "'>".ucwords(strtolower($row['dept_name']))."</label><br>";
+		}	
+	}
+}
+/*
+$query = "SELECT * FROM departments WHERE dept_discount <> 0 ORDER BY dept_no";
+$result = mysql_query($query);
+
+echo "<td><font size='-1'>
+	<p><input type='checkbox' value=1 name='allDepts' id='all' CHECKED><b><label for='all'>All SubDepartments</label></b><br>";
+while ($row = mysql_fetch_assoc($result)) {
+	if (!is_numeric($row['dept_name'])) {
+		echo "<input type='checkbox' name='dept[]' value='".$row['dept_no']."' id='chkbox-" . $row['dept_no'] . "'>\n
+			<label for='chkbox-" . $row['dept_no'] . "'>".ucwords(strtolower($row['dept_name']))."</label><br>";
+	}
+}
+*/
+echo "</p></font></td>";
+
+?>

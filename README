@@ -1,0 +1,8 @@
+This is the install for the New Orleans Food Coop IS4C POS system
+
+
+The following files are NOT included in this repository, but may be required for operation:
+
+fannie/define.conf
+backend/define.conf
+is4c/ini/php.ini

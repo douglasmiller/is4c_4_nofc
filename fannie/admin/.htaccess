@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "FANNIE ADMIN AREA"
+AuthUserFile /pos/.htpasswd
+Require valid-user
