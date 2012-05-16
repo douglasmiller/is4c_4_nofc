@@ -1,4 +1,4 @@
 .htpasswd
 fannie/define.conf
 backend/define.conf
-is4c/ini/php.ini
+is4c/ini/ini.php
